@@ -1,10 +1,13 @@
 # Trabalho-de-Algoritimo-em-Grafo 
 
 Autores:
-Guilherme Marcos Pereira Gonçalves 
 
 
-Cristian Fernandes Sena
+
+   Guilherme Marcos Pereira Gonçalves 
+
+
+   Cristian Fernandes Sena
 
 
 Orientações na qual foi baseado o desenvolvimento:
