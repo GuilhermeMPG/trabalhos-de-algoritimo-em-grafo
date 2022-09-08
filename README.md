@@ -1,17 +1,17 @@
 # Trabalho-de-Algoritimo-em-Grafo 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Autores:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-   Guilherme Marcos Pereira Gonçalves 
-
-
-   Cristian Fernandes Sena
+_Guilherme Marcos Pereira Gonçalves 
 
 
+_Cristian Fernandes Sena
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Orientações na qual foi baseado o desenvolvimento:
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Nesta atividade será trabalhada a implementação de estruturas de dados para 
 representação de grafos e seu uso para obtenção de informações sobre grau e 
 vizinhança dos vértices.
