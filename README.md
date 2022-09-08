@@ -1,6 +1,4 @@
-# Trabalhos-de-Algoritimo-em-Grafo
-
-Trabalho de Algoritimos em Grafos 
+# Trabalho-de-Algoritimo-em-Grafo 
 
 Autores:
 Guilherme Marcos Pereira Gonçalves 
