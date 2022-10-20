@@ -23,6 +23,8 @@ Apartir desse momento e so seguir as orientações que vão aparecer no proprio 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Orientações na qual foi baseado o desenvolvimento:
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Parte 01:
+
 Nesta atividade será trabalhada a implementação de estruturas de dados para 
 representação de grafos e seu uso para obtenção de informações sobre grau e 
 vizinhança dos vértices.
@@ -59,3 +61,17 @@ esperada do arquivo:
  <Origem da Aresta 2>  <Destino da Aresta 2>
                 :                                         :
  <Origem da Aresta m>  <Destino da Aresta m>
+
+ Part 02:
+
+Evoluir a estrutura criada na atividade para que seu programa realize as seguintes operações: 
+1) Realizar busca em profundidade; 
+2) Realizar busca em largura; 
+3) Verificar a existência de caminho entre dois vértices. Caso exista, exibir o caminho.  
+4) Testar se o grafo é conexo; 
+5) Testar se o grafo é cíclico; 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Observações:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ - O arquivo "busca.js" não é utilizado na execução;
