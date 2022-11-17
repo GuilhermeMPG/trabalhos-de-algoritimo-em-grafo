@@ -1,8 +1,5 @@
-
-
-
-inicio()
-function inicio(){
+inicio();
+function inicio() {
      let readline = require('readline-sync'); //Para a leitura dos dados
 
      let escolha;
@@ -14,41 +11,48 @@ function inicio(){
           console.log('3 - Iene');
           console.log('4 - Real');
           console.log('5 - Sair');
-          
 
           escolha = readline.question('-----------------------\n');
 
           switch (
                +escolha //+ faz o cast para int
           ) {
-               case 1:arbitragemCurrency(0);
-               break;
+               case 1:
+                    arbitragemCurrency(0);
+                    break;
 
-               case 2:arbitragemCurrency(1);
-               break;
-               case 3:arbitragemCurrency(2);
-               break;
-               case 4:arbitragemCurrency(3);
-               break;
-               case 5:break;
-               default:console.log("Valor nao encontrado !!!")
-
+               case 2:
+                    arbitragemCurrency(1);
+                    break;
+               case 3:
+                    arbitragemCurrency(2);
+                    break;
+               case 4:
+                    arbitragemCurrency(3);
+                    break;
+               case 5:
+                    break;
+               default:
+                    console.log('Valor nao encontrado !!!');
           }
-}while(escolha=!5);
+     } while ((escolha = !5));
 }
 
-function arbitragemCurrency(moeda){
-let grafo = [
-     { arr: [1, 2, 3], peso: [49, 93.46, 5, 40], moeda: 'Dolar' },
-     { arr: [0, 2, 3], peso: [0.0204, 2, 0.066], moeda: 'Rupias Indianas' },
-     { arr: [0, 1, 3], peso: [0.0107, 0.5, 0.039], moeda: 'Iene' },
-     { arr: [0, 1, 2], peso: [0.19, 15.12, 25.86], moeda: 'Real' },
-];
-buscaProfundidade(grafo, moeda, grafo.length-1);
+function arbitragemCurrency(moeda) {
+     let grafo = [
+          { arr: [1, 2, 3], peso: [49, 93.46, 5, 40], moeda: 'Dolar' },
+          {
+               arr: [0, 2, 3],
+               peso: [0.0204, 2, 0.066],
+               moeda: 'Rupias Indianas',
+          },
+          { arr: [0, 1, 3], peso: [0.0107, 0.5, 0.039], moeda: 'Iene' },
+          { arr: [0, 1, 2], peso: [0.19, 15.12, 25.86], moeda: 'Real' },
+     ];
+     buscaProfundidade(grafo, moeda, grafo.length - 1);
 }
 function buscaProfundidade(grafo, numeroRaiz, numerosVertice) {
-     
-     for (let repeticoes = 0; repeticoes < numerosVertice;repeticoes++) {
+     for (let repeticoes = 0; repeticoes < numerosVertice; repeticoes++) {
           let visitado = zerarVisitados(numerosVertice);
           let pilhadeBusca = [];
           let verticeBusca;
@@ -56,8 +60,7 @@ function buscaProfundidade(grafo, numeroRaiz, numerosVertice) {
           let condicaoDesempilhar = true;
           let listaVerticesProfundidade = [];
           let count = 0;
-          let Ciclo = false;
-          let n3;
+
           let caminhoMoedas = [];
 
           pilhadeBusca.push(numeroRaiz);
@@ -98,7 +101,7 @@ function buscaProfundidade(grafo, numeroRaiz, numerosVertice) {
                                         // );
                                         // console.log(pesoFinal);
 
-                                        n3 = pesoFinal;
+                                        pesoFinal;
                                    }
                                    for (let i = 0; i < pilhaNova.length; i++) {
                                         let moeda = grafo[pilhaNova[i]].moeda;
@@ -106,10 +109,14 @@ function buscaProfundidade(grafo, numeroRaiz, numerosVertice) {
                                         caminhoMoedas.push(moeda);
                                    }
                                    caminhoMoedas = `${caminhoMoedas}`;
-                                   console.log(
-                                        caminhoMoedas.replace(/,/g, ' ')
-                                   );
-                                   console.log('Valor Final: ' + n3+'\n');
+                                   if (pesoFinal > 1) {
+                                        console.log(
+                                             caminhoMoedas.replace(/,/g, ' ')
+                                        );
+                                        console.log(
+                                             'Valor Final: ' + pesoFinal + '\n'
+                                        );
+                                   }
                               }
                               // Busca Ciclo - Fim
                          }
@@ -144,11 +151,7 @@ function buscaProfundidade(grafo, numeroRaiz, numerosVertice) {
                     pilhadeBusca.pop();
                }
           }
-        
-          
      }
-
-     
 }
 
 function zerarVisitados(numerosVertice) {
