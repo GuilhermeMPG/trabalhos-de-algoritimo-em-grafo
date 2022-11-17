@@ -1,98 +1,148 @@
+
+
+
+inicio()
+function inicio(){
+     let readline = require('readline-sync'); //Para a leitura dos dados
+
+     let escolha;
+     do {
+          console.clear();
+          console.log('\nEscolha uma opcao abaixo:');
+          console.log('1 - Dolar');
+          console.log('2 - Rupias Indianas');
+          console.log('3 - Iene');
+          console.log('4 - Real');
+          console.log('5 - Sair');
+          
+
+          escolha = readline.question('-----------------------\n');
+
+          switch (
+               +escolha //+ faz o cast para int
+          ) {
+               case 1:arbitragemCurrency(0);
+               case 2:arbitragemCurrency(1);
+               case 3:arbitragemCurrency(2);
+               case 4:arbitragemCurrency(3);
+               case 5:;
+
+          }
+}while(escolha==5);
+}
+
+function arbitragemCurrency(moeda){
 let grafo = [
-     { arr: [1, 2,3], peso: [49, 93.46,5,40], moeda: 'Dolar' },
-     { arr: [0, 2,3], peso: [0.0204, 2,0.066], moeda: 'Rupias Indianas' },
-     { arr: [0, 1,3], peso: [0.0107, 0.5,0.039], moeda: 'Iene' },
-     {arr: [0,1,2],peso:[0.19,15.12,25.86], moeda:'Real'}
+     { arr: [1, 2, 3], peso: [49, 93.46, 5, 40], moeda: 'Dolar' },
+     { arr: [0, 2, 3], peso: [0.0204, 2, 0.066], moeda: 'Rupias Indianas' },
+     { arr: [0, 1, 3], peso: [0.0107, 0.5, 0.039], moeda: 'Iene' },
+     { arr: [0, 1, 2], peso: [0.19, 15.12, 25.86], moeda: 'Real' },
 ];
-buscaProfundidade(grafo, 3, 3);
-
+buscaProfundidade(grafo, moeda, grafo.length-1);
+}
 function buscaProfundidade(grafo, numeroRaiz, numerosVertice) {
-     let visitado = zerarVisitados(numerosVertice);
-     let pilhadeBusca = [];
-     let verticeBusca;
-     let vizinhosVertice = [];
-     let condicaoDesempilhar = true;
-     let listaVerticesProfundidade = [];
-     let count = 0;
-     let Ciclo = false;
-     let n3;
-     let caminhoMoedas=[];
      
+     for (let repeticoes = 0; repeticoes < numerosVertice;repeticoes++) {
+          let visitado = zerarVisitados(numerosVertice);
+          let pilhadeBusca = [];
+          let verticeBusca;
+          let vizinhosVertice = [];
+          let condicaoDesempilhar = true;
+          let listaVerticesProfundidade = [];
+          let count = 0;
+          let Ciclo = false;
+          let n3;
+          let caminhoMoedas = [];
 
-     pilhadeBusca.push(numeroRaiz);
-     while (pilhadeBusca.length > 0) {
-          let pesoFinal = 1;
-          caminhoMoedas=[];
-          condicaoDesempilhar = true;
+          pilhadeBusca.push(numeroRaiz);
+          while (pilhadeBusca.length > 0) {
+               let pesoFinal = 1;
+               caminhoMoedas = [];
+               condicaoDesempilhar = true;
 
-          verticeBusca = pilhadeBusca.at(-1);
+               verticeBusca = pilhadeBusca.at(-1);
 
-          vizinhosVertice = grafo[verticeBusca].arr;
+               vizinhosVertice = grafo[verticeBusca].arr;
 
-          // listaVerticesProfundidade.push(verticeBusca);
+               // listaVerticesProfundidade.push(verticeBusca);
 
-          // Busca Ciclo - Inicio
-          for (let i = 0; i < vizinhosVertice.length; i++) {
-               if (pilhadeBusca.length > 1) {
-                    if (vizinhosVertice.includes(numeroRaiz)) {
-                         if (visitado[verticeBusca] != 1) {
-                              let pilhaNova = [...pilhadeBusca];
-                              pilhaNova.push(numeroRaiz);
+               // Busca Ciclo - Inicio
+               for (let i = 0; i < vizinhosVertice.length; i++) {
+                    if (pilhadeBusca.length > 1) {
+                         if (vizinhosVertice.includes(numeroRaiz)) {
+                              if (visitado[verticeBusca] != 1) {
+                                   let pilhaNova = [...pilhadeBusca];
+                                   pilhaNova.push(numeroRaiz);
 
-                              console.log(pilhaNova);
+                                   // console.log(pilhaNova);
 
-                              let qtdMinimadeAresta = pilhaNova.length - 1;
-                              for (let i = 0; i < qtdMinimadeAresta; i++) {
-                                   let indexN = grafo[pilhaNova[i]].arr.indexOf(
-                                        pilhaNova[i + 1]
-                                   );
-                                   console.log(indexN + ' index');
-                                   console.log(pilhaNova[i] + ' Pilha');
-                                   pesoFinal =
-                                        pesoFinal *
-                                        grafo[pilhaNova[i]].peso[indexN];
+                                   let qtdMinimadeAresta = pilhaNova.length - 1;
+                                   for (let i = 0; i < qtdMinimadeAresta; i++) {
+                                        let indexN = grafo[
+                                             pilhaNova[i]
+                                        ].arr.indexOf(pilhaNova[i + 1]);
+                                        // console.log(indexN + ' index');
+                                        // console.log(pilhaNova[i] + ' Pilha');
+                                        pesoFinal =
+                                             pesoFinal *
+                                             grafo[pilhaNova[i]].peso[indexN];
+                                        // console.log(
+                                        //      grafo[pilhaNova[i]].peso[indexN] +
+                                        //           '<---------'
+                                        // );
+                                        // console.log(pesoFinal);
+
+                                        n3 = pesoFinal;
+                                   }
+                                   for (let i = 0; i < pilhaNova.length; i++) {
+                                        let moeda = grafo[pilhaNova[i]].moeda;
+                                        moeda = `${moeda} -->`;
+                                        caminhoMoedas.push(moeda);
+                                   }
+                                   caminhoMoedas = `${caminhoMoedas}`;
                                    console.log(
-                                        grafo[pilhaNova[i]].peso[indexN] +
-                                             '<---------'
+                                        caminhoMoedas.replace(/,/g, ' ')
                                    );
-                                   console.log(pesoFinal);
-
-                                   n3 = pesoFinal;
+                                   console.log('Valor Final: ' + n3+'\n');
                               }
-                              for(let i =0;i<pilhaNova.length;i++){
-                                let moeda =   grafo[pilhaNova[i]].moeda;
-                                moeda = `${moeda} -->`;
-                                caminhoMoedas.push(moeda);
-                              }
-                              caminhoMoedas= `${caminhoMoedas}`;
-                              console.log(caminhoMoedas.replace(/,/g,' '));
-                              console.log("Valor Final:" + n3);
+                              // Busca Ciclo - Fim
                          }
-                         // Busca Ciclo - Fim
+                    }
+                    visitado[verticeBusca] = 1;
+                    if (visitado[vizinhosVertice[i]] != 1) {
+                         if (count == 0) {
+                              pilhadeBusca.push(
+                                   vizinhosVertice[i + repeticoes]
+                              );
+                              condicaoDesempilhar = false;
+                              listaVerticesProfundidade.push(
+                                   `${verticeBusca} - ${
+                                        vizinhosVertice[i + repeticoes]
+                                   }`
+                              );
+                              i = vizinhosVertice.length;
+                         } else {
+                              pilhadeBusca.push(vizinhosVertice[i]);
+                              condicaoDesempilhar = false;
+                              listaVerticesProfundidade.push(
+                                   `${verticeBusca} - ${vizinhosVertice[i]}`
+                              );
+                              i = vizinhosVertice.length;
+                         }
                     }
                }
-               visitado[verticeBusca] = 1;
-               if (visitado[vizinhosVertice[i]] != 1) {
-                    pilhadeBusca.push(vizinhosVertice[i]);
-                    condicaoDesempilhar = false;
-                    listaVerticesProfundidade.push(
-                         `${verticeBusca} - ${vizinhosVertice[i]}`
-                    );
-                    i = vizinhosVertice.length;
+
+               count++;
+
+               if (condicaoDesempilhar == true) {
+                    pilhadeBusca.pop();
                }
           }
-          if (Ciclo === true) {
-               pilhadeBusca.length = 0;
-          }
-          count++;
-
-          if (condicaoDesempilhar == true) {
-               pilhadeBusca.pop();
-          }
+        
+          
      }
-     let resultado = [listaVerticesProfundidade, visitado, Ciclo];
-     //  console.log(listaVerticesProfundidade);
-     return resultado;
+
+     
 }
 
 function zerarVisitados(numerosVertice) {
@@ -100,5 +150,6 @@ function zerarVisitados(numerosVertice) {
      for (let i = 0; i <= numerosVertice; i++) {
           visitado[i] = 0;
      }
+
      return visitado;
 }
