@@ -34,7 +34,7 @@ function inicio(){
                default:console.log("Valor nao encontrado !!!")
 
           }
-}while(escolha==5);
+}while(escolha=!5);
 }
 
 function arbitragemCurrency(moeda){
