@@ -22,10 +22,16 @@ function inicio(){
                +escolha //+ faz o cast para int
           ) {
                case 1:arbitragemCurrency(0);
+               break;
+
                case 2:arbitragemCurrency(1);
+               break;
                case 3:arbitragemCurrency(2);
+               break;
                case 4:arbitragemCurrency(3);
-               case 5:;
+               break;
+               case 5:break;
+               default:console.log("Valor nao encontrado !!!")
 
           }
 }while(escolha==5);
