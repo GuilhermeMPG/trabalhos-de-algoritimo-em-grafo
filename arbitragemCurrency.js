@@ -109,14 +109,14 @@ function buscaProfundidade(grafo, numeroRaiz, numerosVertice) {
                                         caminhoMoedas.push(moeda);
                                    }
                                    caminhoMoedas = `${caminhoMoedas}`;
-                                   if (pesoFinal > 1) {
+                                   
                                         console.log(
                                              caminhoMoedas.replace(/,/g, ' ')
                                         );
                                         console.log(
                                              'Valor Final: ' + pesoFinal + '\n'
                                         );
-                                   }
+                                   
                               }
                               // Busca Ciclo - Fim
                          }
