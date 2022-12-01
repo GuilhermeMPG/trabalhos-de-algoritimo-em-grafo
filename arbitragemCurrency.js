@@ -1,3 +1,5 @@
+let tempoAntes= Date.now();
+
 inicio();
 function inicio() {
      let readline = require('readline-sync'); //Para a leitura dos dados
@@ -152,6 +154,9 @@ function buscaProfundidade(grafo, numeroRaiz, numerosVertice) {
                }
           }
      }
+
+    let tempo= Date.now() -  tempoAntes;
+    console.log("Tempo Execução:" + tempo + "ms");   
 }
 
 function zerarVisitados(numerosVertice) {
